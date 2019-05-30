@@ -8,8 +8,8 @@ public class Principal {
 		//Scanner s = new Scanner(System.in);
 		BancoDePalavras banco = new BancoDePalavras();
 		
-		FabricaDeEmbaralhadores embaralhadores = FabricaDeEmbaralhadores.getInstancia(banco.getPalavraSelecionada());
-		Embaralhador embaralhador = embaralhadores.getEmbaralhador();
+		FabricaDeEmbaralhadores embaralhadores = FabricaDeEmbaralhadores.getInstancia();
+		Embaralhador embaralhador = embaralhadores.getEmbaralhador(banco.getPalavraSelecionada());
 		System.out.println(embaralhador.getPalavraCorreta());
 		System.out.println(embaralhador.getPalavraEmbaralhada());
 	}
