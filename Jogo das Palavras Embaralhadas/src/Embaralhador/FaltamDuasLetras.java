@@ -1,33 +1,31 @@
 package Embaralhador;
 
-public class FaltamDuasLetras extends Embaralhador {
-
-	public FaltamDuasLetras(String palavra) {
-		super(palavra);
-	}
-
-	protected String embaralhar() {
-		char[] palavras = palavraCorreta.toCharArray();
+public class FaltamDuasLetras implements Embaralhador {
+	
+	protected char[] letras;
+	
+	public String embaralhar(String palavra) {
+		letras = palavra.toCharArray();
 		Integer[] ocultar = new Integer[2];
-		ocultar[0] = posicaoAleatoria(palavras.length);
-		ocultar[1] = posicaoAleatoria(palavras.length, ocultar[0]);
-		palavras[ocultar[0]] = "_".charAt(0);
-		palavras[ocultar[1]] = "_".charAt(0);
-		String palavra = "";
-		for(int i = 0; i < palavras.length ;i++) {
-			palavra += palavras[i];
+		ocultar[0] = posicaoAleatoria();
+		ocultar[1] = posicaoAleatoria(ocultar[0]);
+		letras[ocultar[0]] = "_".charAt(0);
+		letras[ocultar[1]] = "_".charAt(0);
+		String palavraEmbaralhada = "";
+		for(int i = 0; i < letras.length ;i++) {
+			palavraEmbaralhada += letras[i];
 		}
-		return palavra;
+		return palavraEmbaralhada;
 	}
 	
-	private int posicaoAleatoria(int length) {
-		return (int) (Math.random() * length);
+	private int posicaoAleatoria() {
+		return (int) (Math.random() * letras.length);
 	}
 	
-	private int posicaoAleatoria(int length, int ignore) {
-		int result = (int) (Math.random() * length);
+	private int posicaoAleatoria(int ignore) {
+		int result = (int) (Math.random() * letras.length);
 		while(result == ignore) {
-			result = (int) (Math.random() * length);
+			result = (int) (Math.random() * letras.length);
 		}
 		return result;
 	}

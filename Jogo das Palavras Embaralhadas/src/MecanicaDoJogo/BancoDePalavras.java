@@ -1,3 +1,4 @@
+package MecanicaDoJogo;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -5,16 +6,24 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class BancoDePalavras {
-
+	
+	private static BancoDePalavras instancia = null;
 	private String nomeDoArquivo;
 	private String palavraSelecionada;
 	
-	public BancoDePalavras() {
+	private BancoDePalavras() {
 		this.nomeDoArquivo = System.getProperty("user.dir")+"/src/bancoDePalavras.txt";
-		this.encontrarPalavra();
+	}
+	
+	public static BancoDePalavras getInstancia() {
+		if(instancia == null) {
+			instancia = new BancoDePalavras();
+		}
+		return instancia;
 	}
 
 	public String getPalavraSelecionada() {
+		this.encontrarPalavra();
 		return palavraSelecionada;
 	}
 	

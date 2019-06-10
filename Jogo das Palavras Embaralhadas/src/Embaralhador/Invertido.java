@@ -1,13 +1,9 @@
 package Embaralhador;
 
-public class Invertido extends Embaralhador {
-	
-	public Invertido(String palavra) {
-		super(palavra);
-	}
+public class Invertido implements Embaralhador {
 
-	protected String embaralhar() {
-		StringBuffer sb = new StringBuffer(palavraCorreta);
+	public String embaralhar(String palavra) {
+		StringBuffer sb = new StringBuffer(palavra);
 		sb.reverse();
 		return sb.toString();
 	}
