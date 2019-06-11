@@ -7,14 +7,15 @@ public class FabricaDeEmbaralhadores {
 	
 	private ArrayList<Embaralhador> embaralhadores;
 	
-	public void Embaralhador() {
+	public FabricaDeEmbaralhadores() {
+		embaralhadores = new ArrayList<Embaralhador>();
 		embaralhadores.add(new Invertido());
 		embaralhadores.add(new FaltamDuasLetras());
 	}
 	
 	public Embaralhador getEmbaralhador() {
-		// sortear um embaralhador aleatoriamente
-		return null;
+		int random = (int) (Math.random() * embaralhadores.size());
+		return embaralhadores.get(random);
 	}
 
 }

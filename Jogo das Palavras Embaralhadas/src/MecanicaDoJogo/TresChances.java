@@ -1,41 +1,24 @@
 package MecanicaDoJogo;
 
-public class TresChances extends TipoDeJogo {
+public class TresChances extends MecanicaDoJogo {
 
-	@Override
-	public String getPalavraEmbaralhahda() {
-		// TODO Auto-generated method stub
-		return null;
+	private int nChances = 3;
+	
+	public TresChances() {
+		nome = "Três Chances";
+		regras = "Pode errar apenas 3 vezes!";
+		novaRodada();
 	}
-
-	@Override
-	public int getPontuacao() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public boolean getAcertou() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean getPerdeu() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean getVenceu() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public String setResposta() {
-		// TODO Auto-generated method stub
-		return null;
+	
+	public void responder(String resposta) {
+		if(resposta.equalsIgnoreCase(palavraCorreta)) {
+			pontuacao += 1;
+			acabou = false;
+			novaRodada();
+		} else {
+			nChances -= 1;
+			acabou = (nChances < 1);
+		}
 	}
 
 }

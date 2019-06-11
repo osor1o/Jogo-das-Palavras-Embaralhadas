@@ -7,24 +7,16 @@ import java.util.Scanner;
 
 public class BancoDePalavras {
 	
-	private static BancoDePalavras instancia = null;
 	private String nomeDoArquivo;
-	private String palavraSelecionada;
+	private String palavra;
 	
-	private BancoDePalavras() {
-		this.nomeDoArquivo = System.getProperty("user.dir")+"/src/bancoDePalavras.txt";
-	}
-	
-	public static BancoDePalavras getInstancia() {
-		if(instancia == null) {
-			instancia = new BancoDePalavras();
-		}
-		return instancia;
+	public BancoDePalavras() {
+		nomeDoArquivo = System.getProperty("user.dir")+"/src/bancoDePalavras.txt";
 	}
 
-	public String getPalavraSelecionada() {
-		this.encontrarPalavra();
-		return palavraSelecionada;
+	public String getPalavra() {
+		encontrarPalavra();
+		return palavra;
 	}
 	
 	private void encontrarPalavra() {
@@ -40,7 +32,7 @@ public class BancoDePalavras {
 		} finally {
 			scanner.close();
 			int random = (int) (Math.random() * palavras.size());
-			this.palavraSelecionada = palavras.get(random);
+			palavra = palavras.get(random);
 		}
 	}
 	

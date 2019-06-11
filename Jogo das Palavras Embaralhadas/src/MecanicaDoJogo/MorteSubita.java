@@ -1,41 +1,21 @@
 package MecanicaDoJogo;
 
-public class MorteSubita extends TipoDeJogo {
+public class MorteSubita extends MecanicaDoJogo {
 
-	@Override
-	public String getPalavraEmbaralhahda() {
-		// TODO Auto-generated method stub
-		return null;
+	public MorteSubita() {
+		nome = "Morte Súbita";
+		regras = "Errou perdeu!";
+		novaRodada();
 	}
-
-	@Override
-	public int getPontuacao() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public boolean getAcertou() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean getPerdeu() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean getVenceu() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public String setResposta() {
-		// TODO Auto-generated method stub
-		return null;
+	
+	public void responder(String resposta) {
+		if(resposta.equalsIgnoreCase(palavraCorreta)) {
+			pontuacao += 1;
+			acabou = false;
+			novaRodada();
+		} else {
+			acabou = true;
+		}
 	}
 
 }
